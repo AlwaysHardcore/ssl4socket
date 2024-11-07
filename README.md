@@ -24,10 +24,10 @@
 > IP.1 = 192.168.1.1
 > ```
 
-1 1. Генерируем сертификат CA (Certificate authority).
+*1) Генерируем закрытый ключ для CA (Certificate authority) сертификата.*
 
-   openssl genrsa -out rootCA.key 2048
+   `openssl genrsa -out rootCA.key 2048`
 
-2) Подписываем его
+*2) Подписываем его*
 
-   openssl req -x509 -new -nodes -key rootCA.key -sha256 -days 365 -out rootCA.pem -config cert.conf
+   `openssl req -x509 -new -nodes -key rootCA.key -sha256 -days 365 -out rootCA.pem -config cert.conf`
