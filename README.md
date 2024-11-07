@@ -26,8 +26,14 @@
 
 *1) Генерируем закрытый ключ для CA (Certificate authority) сертификата.*
 
-   `openssl genrsa -out rootCA.key 2048`
+   `openssl genrsa -out CA.key 2048`
 
 *2) Подписываем его*
 
-   `openssl req -x509 -new -nodes -key rootCA.key -sha256 -days 365 -out rootCA.pem -config cert.conf`
+   `openssl req -x509 -new -nodes -key CA.key -sha256 -days 365 -out CA.pem -config server.conf`
+
+*3) openssl genrsa -out client1.key 2048
+
+*4) openssl req -new -key client1.key -out client1.csr -config client1.conf
+
+*5) openssl x509 -req -in client1.csr -CA CA.pem -CAkey CA.key -CAcreateserial -out client1.crt -days 364 -sha256
